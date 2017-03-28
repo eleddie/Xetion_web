@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-xs-12">
+        <section widget class="widget">
+            <header>
+                <div class="text-center p-t-1">
+                    <h2>{{name}} {{lastname}} - #{{hNumber}}</h2>
+                </div>
+            </header>
+            <div class="widget-body p-t-2 p-b-2">
+                <div class="row">
+                    <div class="col-xs-12 text-right p-r-3 form-group required">
+                        <label for="date" class="control-label"><strong>Fecha de la
+                            consulta</strong></label>
+                        <p-calendar id="date" [(ngModel)]="dateValue" dateFormat="dd/mm/yy"
+                                    [showIcon]="true"></p-calendar>
+                    </div>
+                    <div class="col-xs-6 form-group required">
+                        <label for="observations"
+                               class="control-label"><strong>Observaciones</strong></label>
+                        <textarea rows="5" id="observations" class="form-control"
+                                  placeholder="Observaciones de la consulta" [(ngModel)]="observations"
+                                  type="text"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="diagnose" class="control-label"><strong>Exámenes Complementarios</strong></label>
+                        <textarea rows="5" id="diagnose" class="form-control"
+                                  placeholder="Exámenes complementarios hechos" [(ngModel)]="additionalTests"
+                                  type="text"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="plan-evo" class="control-label"><strong>Plan</strong></label>
+                        <textarea rows="5" id="plan-evo" class="form-control" type="text"
+                                  placeholder="Plan de la consulta" [(ngModel)]="planEvo"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="treatment" class="control-label"><strong>Tratamiento</strong></label>
+                        <textarea rows="5" id="treatment" class="form-control" type="text"
+                                  placeholder="Tratamiento de la consulta"
+                                  [(ngModel)]="treatment"></textarea>
+                    </div>
+                </div>
+                <div class="row p-t-2 text-center">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary" (click)="save()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section *ngFor="let evo of evolutions.reverse(); let i = index" widget class="widget">
+            <header>
+                <div class="text-center p-t-1">
+                    <h3>{{evo.date | date}}</h3>
+                    <hr/>
+                </div>
+            </header>
+            <div class="widget-body p-b-2">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="observations-{{i}}" class="control-label"><strong>Observaciones</strong></label>
+                        <p class="t-1_1 p-l-2" id="observations-{{i}}">{{evo.observations}}</p>
+                    </div>
+                    <div class="col-xs-12">
+                        <label for="diagnose-{{i}}" class="control-label"><strong>Exámenes
+                            Complementarios</strong></label>
+                        <p class="t-1_1 p-l-2" id="diagnose-{{i}}">{{evo.additionalTests}}</p>
+                    </div>
+                    <div class="col-xs-12">
+                        <label for="plan-{{i}}" class="control-label"><strong>Plan</strong></label>
+                        <p class="t-1_1 p-l-2" id="plan-{{i}}">{{evo.planEvo}}</p>
+                    </div>
+                    <div class="col-xs-12">
+                        <label for="treatment-{{i}}" class="control-label"><strong>Tratamiento</strong></label>
+                        <p class="t-1_1 p-l-2" id="treatment-{{i}}">{{evo.treatment}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>

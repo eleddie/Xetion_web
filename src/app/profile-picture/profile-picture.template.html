@@ -1,0 +1,9 @@
+<div (mouseover)="over = true" (mouseleave)="over = false">
+    <div style="height: 250px; width: 250px;">
+        <img class="image" src="../../assets/img/avatar.png">
+        <div class="hover" *ngIf="over">
+            <span style="color:white"><i class="fa fa-camera" aria-hidden="true"></i></span>
+            <span style="color:white">Cambiar Imagen</span>
+        </div>
+    </div>
+</div>

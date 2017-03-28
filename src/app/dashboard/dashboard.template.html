@@ -1,0 +1,229 @@
+<div class="row">
+    <div class="col-xs-12">
+        <section widget class="widget">
+            <header>
+                <button type="button" class="btn btn-default pull-left" (click)="updateCurrent(-1)"
+                        [class.hideB]="hNumber == 1"><i
+                        class="fa fa-chevron-left"
+                        aria-hidden="true"></i>&nbsp;&nbsp;Anterior
+                </button>
+                <button type="button" class="btn btn-default pull-right" (click)="updateCurrent(1)"
+                        [class.hideB]="hNumber > lastHNumber">{{hNumber == lastHNumber ? 'Nuevo Paciente' :
+                    'Siguiente'}}&nbsp;&nbsp;<i
+                            class="fa fa-chevron-right"
+                            aria-hidden="true"></i>
+                </button>
+                <div class="text-center p-t-1">
+                    <h2>{{hNumber > lastHNumber && name == "" && lastname == "" ? "Nuevo Paciente" : name + " " +
+                        lastname}} - #{{hNumber}}</h2>
+                </div>
+            </header>
+            <div class="widget-body p-t-2 p-b-2">
+                <div class="row">
+
+                    <div class="col-xs-4 text-center">
+                        <profile-picture></profile-picture>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="row">
+                            <div class="col-xs-6 form-group required">
+                                <label for="name" class="control-label"><strong>Nombre</strong></label>
+                                <input id="name" class="form-control"
+                                       placeholder="Nombre" [(ngModel)]="name"
+                                       (ngModelChange)="name = upperCaseFirst(name)"
+                                       type="text">
+                            </div>
+
+                            <div class="col-xs-6 form-group required">
+                                <label for="bdate" class="control-label"><strong>Fecha de Nacimiento</strong></label>
+
+                                <div class="input-group">
+                                    <input id="bdate" class="form-control" type="text"
+                                           placeholder="DD/MM/YYYY" [(ngModel)]="bDateValue"
+                                           (ngModelChange)="updateBDateMask()" [textMask]="bDateMask">
+                                    <div class="input-group-addon">{{ageData? ageData.age : 0}}</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 form-group required">
+                                <label for="lastname" class="control-label"><strong>Apellido</strong></label>
+                                <input id="lastname" class="form-control"
+                                       placeholder="Apellido" [(ngModel)]="lastname"
+                                       (ngModelChange)="lastname = upperCaseFirst(lastname)"
+                                       type="text">
+                            </div>
+
+                            <div class="col-xs-6 form-group required">
+                                <label class="control-label" for="exo"><strong>Exonerado</strong></label>
+                                <div id="exo" class="controls">
+                                    <label class="radio inline" for="exo-0">
+                                        <input name="exo" id="exo-0" [(ngModel)]="exonerated" value="yes"
+                                               checked="checked" type="radio">
+                                        &nbsp;&nbsp;Si
+                                    </label>
+                                    <label class="radio inline" for="exo-1">
+                                        <input name="exo" id="exo-1" [(ngModel)]="exonerated"
+                                               value="no" type="radio">
+                                        &nbsp;&nbsp;No
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 form-group required">
+                                <label for="dni" class="control-label"><strong>Cédula</strong></label>
+                                <input id="dni" class="form-control" type="text"
+                                       placeholder="V-1234567" [(ngModel)]="dniValue"
+                                       (ngModelChange)="dniValue = upperCaseFirst(dniValue)"
+                                       [textMask]="dniMask">
+                            </div>
+
+
+                            <div class="col-xs-6 form-group required">
+                                <label class="control-label" for="exo"><strong>Vivo</strong></label>
+                                <div id="alive" class="controls">
+                                    <label class="radio inline" for="exo-0">
+                                        <input name="alive" id="alive-0" [(ngModel)]="alive" value="yes"
+                                               checked="checked" type="radio">
+                                        &nbsp;&nbsp;Si
+                                    </label>
+                                    <label class="radio inline" for="exo-1">
+                                        <input name="alive" id="alive-1" [(ngModel)]="alive"
+                                               value="no" type="radio">
+                                        &nbsp;&nbsp;No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 p-t-2 form-group required">
+                        <label for="occupation" class="control-label"><strong>Ocupación</strong></label>
+                        <select id="occupation" [(ngModel)]="occupation"
+                                class="form-control input-xlarge">
+                            <option>Estudiante</option>
+                            <option>Casado/a</option>
+                            <option>Divorciado/a</option>
+                            <option>Viudo/a</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-4 p-t-2 form-group required">
+                        <label class="control-label" for="gender"><strong>Sexo</strong></label>
+                        <div id="gender" class="controls">
+                            <label class="radio inline" for="gender-0">
+                                <input name="gender" id="gender-0" [(ngModel)]="gender" value="Male"
+                                       checked="checked"
+                                       type="radio">
+                                &nbsp;&nbsp;Hombre
+                            </label>
+                            <label class="radio inline" for="gender-1">
+                                <input name="gender" id="gender-1" [(ngModel)]="gender"
+                                       value="Female" type="radio">
+                                &nbsp;&nbsp;Mujer
+                            </label>
+                            <label class="radio inline" for="gender-2">
+                                <input name="gender" id="gender-2" [(ngModel)]="gender"
+                                       value="Other" type="radio">
+                                &nbsp;&nbsp;Otro
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-2 p-t-2 form-group required">
+                        <label for="marital" class="control-label"><strong>Estado Civil</strong></label>
+                        <select id="marital" [(ngModel)]="marital"
+                                class="form-control input-xlarge">
+                            <option>Soltero/a</option>
+                            <option>Casado/a</option>
+                            <option>Divorciado/a</option>
+                            <option>Viudo/a</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-xs-6 p-t-2 form-group required">
+                        <label for="address" class="control-label"><strong>Dirección</strong></label>
+                        <input id="address" class="form-control"
+                               placeholder="Dirección" [(ngModel)]="address" type="text">
+                    </div>
+
+                    <div class="col-xs-2 p-t-2 form-group required">
+                        <label for="state" class="control-label"><strong>Estado</strong></label>
+                        <select id="state" [(ngModel)]="state" class="form-control input-xlarge">
+                            <option>Carabobo</option>
+                            <option>Computer Course</option>
+                            <option>University Course</option>
+                            <option>Other Course</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-2 p-t-2 form-group required">
+                        <label for="city" class="control-label"><strong>Ciudad</strong></label>
+                        <select id="city" [(ngModel)]="city" class="form-control input-xlarge">
+                            <option>Valencia</option>
+                            <option>Computer Course</option>
+                            <option>University Course</option>
+                            <option>Other Course</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-2 p-t-2 form-group required">
+                        <label for="zip-code" class="control-label"><strong>Código postal</strong></label>
+                        <input id="zip-code" [(ngModel)]="zip" placeholder="Zip"
+                               class="form-control" type="number"/>
+                    </div>
+
+                    <div class="col-xs-3 p-t-2 form-group required">
+                        <label for="insurance" class="control-label"><strong>Asegurador</strong></label>
+                        <select id="insurance" [(ngModel)]="insurance"
+                                class="form-control input-xlarge">
+                            <option>Seguros Caracas C.A.</option>
+                            <option>Casado/a</option>
+                            <option>Divorciado/a</option>
+                            <option>Viudo/a</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-3 p-t-2 form-group">
+                        <label for="referred" class="control-label"><strong>Referido por</strong></label>
+                        <select id="referred" [(ngModel)]="referred"
+                                class="form-control input-xlarge">
+                            <option>Dr. Pablo Sanchez</option>
+                            <option>Casado/a</option>
+                            <option>Divorciado/a</option>
+                            <option>Viudo/a</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-6 p-t-2 form-group">
+                        <label for="email" class="control-label"><strong>Email</strong></label>
+                        <input id="email" [(ngModel)]="email" class="form-control"
+                               placeholder="example@domain.com" [(ngModel)]="email" type="email">
+                    </div>
+
+                </div>
+                <div class="row p-t-2 text-center">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary" (click)="save()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!--Modal search result-->
+<modal #modalSearch>
+    <modal-header>
+        <h4 class="modal-title">Selecciona un paciente</h4>
+    </modal-header>
+    <modal-body>
+        <select-patient [patients]="searchResults"
+                        (selected)="modalSearch.close(); setPatientData($event)"></select-patient>
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modalSearch.dismiss()">Cancel
+        </button>
+    </modal-footer>
+</modal>

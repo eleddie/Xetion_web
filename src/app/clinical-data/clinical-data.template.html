@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-xs-12">
+        <section widget class="widget">
+            <header>
+                <div class="text-center p-t-1">
+                    <h2>{{name}} {{lastname}} - #{{hNumber}}</h2>
+                </div>
+            </header>
+            <div class="widget-body p-t-2 p-b-2">
+
+                <div class="row">
+                    <div class="col-xs-12 text-right p-r-3 form-group required">
+                        <label for="firstdate" class="control-label"><strong>Fecha de la
+                            consulta</strong></label>
+                        <p-calendar id="firstdate" [(ngModel)]="dateValue" dateFormat="dd/mm/yy"
+                                    [showIcon]="true"></p-calendar>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="reason" class="control-label"><strong>Motivo de la
+                            visita</strong></label>
+                        <textarea rows="5" id="reason" class="form-control"
+                                  placeholder="Motivo" [(ngModel)]="reason" type="text"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="current-sickness" class="control-label"><strong>Enfermedad
+                            actual</strong></label>
+                        <textarea rows="5" id="current-sickness" class="form-control"
+                                  placeholder="Enfermedad actual" [(ngModel)]="currentSickness"
+                                  type="text"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="family-background" class="control-label"><strong>Antecedentes
+                            familiares</strong></label>
+                        <textarea rows="5" id="family-background" class="form-control" type="text"
+                                  placeholder="Detalles familiares"
+                                  [(ngModel)]="familyBackground"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="personal-background" class="control-label"><strong>Antecedentes
+                            personales</strong></label>
+                        <textarea rows="5" id="personal-background" class="form-control" type="text"
+                                  placeholder="Detalles personales"
+                                  [(ngModel)]="personalBackground"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="physical-test" class="control-label"><strong>Examen
+                            físico</strong></label>
+                        <textarea rows="5" id="physical-test" class="form-control" type="text"
+                                  placeholder="Examen físico hecho" [(ngModel)]="physicalTest"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="medical-test" class="control-label"><strong>Examen
+                            médico</strong></label>
+                        <textarea rows="5" id="medical-test" class="form-control" type="text"
+                                  placeholder="Examen médico hecho" [(ngModel)]="medicalTest"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="provisional-diagnose" class="control-label"><strong>Diagnostico
+                            provisional</strong></label>
+                        <textarea rows="5" id="provisional-diagnose" class="form-control" type="text"
+                                  placeholder="Diagnostico provisional del paciente"
+                                  [(ngModel)]="provisionalDiagnose"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="initial-treatment" class="control-label"><strong>Tratamiento
+                            inicial</strong></label>
+                        <textarea rows="5" id="initial-treatment" class="form-control" type="text"
+                                  placeholder="Tratamiento inical aplicado"
+                                  [(ngModel)]="initialTreatment"></textarea>
+                    </div>
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="plan" class="control-label"><strong>Plan</strong></label>
+                        <textarea rows="5" id="plan" class="form-control" type="text"
+                                  placeholder="Plan para evolución"
+                                  [(ngModel)]="plan"></textarea>
+                    </div>
+
+
+                    <div class="col-xs-6 form-group required">
+                        <label for="aditional-tests" class="control-label"><strong>Exámenes
+                            complementarios</strong></label>
+                        <textarea rows="5" id="aditional-tests" class="form-control" type="text"
+                                  placeholder="Exámenes adicionales hechos"
+                                  [(ngModel)]="additionalTests"></textarea>
+                    </div>
+
+                </div>
+                <div class="row p-t-2 text-center">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary" (click)="save()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

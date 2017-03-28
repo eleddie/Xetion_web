@@ -1,0 +1,48 @@
+<div class="container">
+    <main id="content" class="widget-login-container" role="main">
+        <div class="row">
+            <div class="col-xl-4 col-md-6 col-xs-10 offset-xl-4 offset-md-3 offset-xs-1">
+                <h5 class="widget-login-logo animated fadeInUp">
+                    <i class="fa fa-circle text-gray"></i>
+                    xetion
+                    <i class="fa fa-circle text-warning"></i>
+                </h5>
+                <section class="widget widget-login animated fadeInUp">
+                    <header>
+                        <h3>Login to your Xetion App</h3>
+                    </header>
+                    <div class="widget-body">
+                        <div *ngIf="errorLogin" class="alert alert-danger">
+                            <strong>Error!</strong> Usuario o contraseña invalidos.
+                        </div>
+                        <form class="login-form mt-lg">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="username"
+                                       [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id="pswd" type="password" placeholder="Contraseña"
+                                       [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="clearfix">
+
+                                <div class="btn-toolbar float-xs-left m-t-1">
+                                    <a class="mr-n-lg" href="#">Trouble with account?</a>
+                                </div>
+
+
+                                <div class="btn-toolbar float-xs-right m-t-1">
+                                    <i *ngIf="logginIn" class="fa fa-spinner fa-spin"></i>
+                                    <button class="btn btn-primary" (click)="onLogin()">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="page-footer">
+        2017 &copy; Xetion. Admin Dashboard.
+    </footer>
+</div>

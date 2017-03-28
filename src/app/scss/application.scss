@@ -1,0 +1,71 @@
+@import "variables";
+@import "mixins";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/font-awesome/scss/font-awesome";
+@import "../../../node_modules/glyphicons-halflings/scss/glyphicons-halflings";
+@import "../../../node_modules/pace/themes/pace-theme-flash";
+@import "../../../node_modules/animate.css/animate";
+@import "../../../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox";
+@import "bootstrap-override";
+@import "libs-override";
+@import "../../../node_modules/primeng/resources/themes/omega/theme";
+@import "../../../node_modules/primeng/resources/primeng.min";
+//
+//end custom libs
+//everything below this line is required for essential styling
+@import "font";
+@import "general";
+@import "global-transitions";
+@import "base";
+@import "utils";
+
+.t-1_1 {
+  font-size: 1.1em;
+}
+
+.hideB {
+  visibility: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.p-1 {
+  padding: 1em;
+}
+
+.p-t-1 {
+  padding-top: 1em;
+}
+
+.p-t-3 {
+  padding-top: 3em;
+}
+
+.p-t-2 {
+  padding-top: 2em;
+}
+
+.p-b-2 {
+  padding-bottom: 2em;
+}
+
+.p-r-3 {
+  padding-right: 3em;
+}
+
+.p-l-2 {
+  padding-left: 2em;
+}
+
+.form-group.required .control-label:after {
+  color: red;
+  content: "*";
+  font-weight: bold;
+  padding-left: 2px;
+}
